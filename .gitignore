@@ -1,1 +1,5 @@
 /app/BackEnd/virtual/
+__pycache__
+/app/BackEnd/taskAPP/taskAPP/__pycache__
+/app/BackEnd/taskAPP/taskAPP/__pycache__/settings.cpython-36.pyc
+/app/BackEnd/taskAPP/db.sqlite3
