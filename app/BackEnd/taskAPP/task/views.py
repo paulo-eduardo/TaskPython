@@ -71,7 +71,7 @@ class TaskStatus(APIView):
         
         if task.status:
             task.concluded = datetime.now
-        else
+        else:
             task.concluded = None
 
         serializer = TaskSerializer(task)
