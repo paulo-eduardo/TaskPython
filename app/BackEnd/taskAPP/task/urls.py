@@ -4,7 +4,7 @@ from task import views
 
 urlpatterns = [
     url(r'^api/task/$', views.TaskList.as_view()),
-    # url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
+    url(r'^api/task/(?P<pk>[0-9]+)/$', views.TaskList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

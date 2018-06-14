@@ -19,3 +19,14 @@ class TaskList(APIView):
         tasks = Task.objects.all()
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
+
+
+class Task(APIView):
+    
+    def put(self, request, pk, format=None):
+        taks = self.get_object(pk)
+        serializer = TaskSerializer(task)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
