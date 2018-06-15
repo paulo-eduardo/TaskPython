@@ -15,7 +15,6 @@ class TaskList(APIView):
     #Endpoint para criar uma nova tarefa
     def post(self, request, format=None):
         serializer = TaskSerializer(data = request.data)
-        serializer.created = datetime.now
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
