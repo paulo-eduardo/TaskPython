@@ -80,7 +80,7 @@ export default {
         }
     },
     mounted(){
-        fetch('http://localhost:8000/api/task/', {
+        fetch(localStorage.link + '/api/task/', {
         })
         .then(response => response.json())
         .then((data) => {
@@ -89,16 +89,17 @@ export default {
     },
     methods: {
         alterarStatusTask(task){
-            fetch('http://localhost:8000/api/task/' + task.id + '/', {
+            fetch(localStorage.link + '/api/task/' + task.id + '/', {
                 method: "POST"
             })
             .then(request => request.json())
             .then((data) => {
                 task.concluded = data["concluded"]
+                task.edited = data["edited"]
             })
         },
         excluirTask(task){
-            fetch('http://localhost:8000/api/task/' + task.id + '/', {
+            fetch(localStorage.link + '/api/task/' + task.id + '/', {
                 method: "DELETE"
             })
             .then(() => {
@@ -107,7 +108,7 @@ export default {
             })
         },
          criarTask() {
-            fetch("http://localhost:8000/api/task/", {
+            fetch(localStorage.link + '/api/task/', {
                 body: JSON.stringify(this.novaTask),
                 method: "POST",
                 headers: {
@@ -122,8 +123,11 @@ export default {
             })
         },
         atualizarTask(task){
-            fetch('http://localhost:8000/api/task/' + task.id + '/', {
-                body: JSON.stringify(task),
+            fetch(localStorage.link + '/api/task/' + task.id + '/', {
+                body: JSON.stringify({
+                    "titulo": task.titulo,
+                    "descricao": task.descricao
+                }),
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

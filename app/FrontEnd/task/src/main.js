@@ -11,3 +11,8 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+if(process.env.NODE_ENV == 'development')
+  localStorage.link = "http://localhost:8000"
+else
+  localStorage.link = "https://taskbackapi.herokuapp.com"
