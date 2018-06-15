@@ -52,14 +52,15 @@ class TaskDetail(APIView):
 
     def post(self, request, pk, format=None):
         task = self.get_object(pk)
-        task.status = not task.status
+        date = datetime.now()
+        if(task.status):
+            date = None
+        data = {
+            "status": not task.status,
+            "concluded": date
+        }
         
-        if task.status:
-            task.concluded = datetime.now()
-        else:
-            task.concluded = None
-
-        serializer = TaskSerializer(task, data=request.data)
+        serializer = TaskSerializer(task, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
