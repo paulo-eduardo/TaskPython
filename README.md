@@ -17,9 +17,11 @@ virtual\Scripts\activate.bat
 #Configure ambiente virtual
 pip install django
 pip intall djangorestframework
+pip install django-cors-headers
 
 #Agora acesse pasta do sistema e rode o serviço de BackEnd
 cd taskAPP
+python manage.py migrate
 python manage.py runserver
 ```
 
