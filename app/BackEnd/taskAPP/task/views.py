@@ -42,7 +42,7 @@ class TaskDetail(APIView):
     #Endpoint para alterar tarefa
     def put(self, request, pk, format=None):
         task = self.get_object(pk)
-        task.edited = datetime.now()
+        request.data["edited"] = datetime.now()
         serializer = TaskSerializer(task, data=request.data)
         if serializer.is_valid():
             serializer.save()

@@ -105,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+
+    'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S",
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -112,8 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
-
-DATETIME_FORMAT = '%d/%m/%Y %H:%M:%S'
 
 USE_I18N = False
 

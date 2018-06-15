@@ -51,7 +51,7 @@
             </tbody> 
         </table>
         <div class="novaTask">
-            <b> Nova task </b>
+            <b> Criar Nova Task </b>
         </div>
         <div class="row">
             <div class="input-field col s3">
@@ -128,7 +128,10 @@ export default {
                 headers: {
                     "Content-Type": "application/json",
                 },
-            }).then(() => {
+            })
+            .then(request => request.json())
+            .then((data) => {
+                task.edited = data.edited;
                 this.editandoTask = null;
             })
         }
